@@ -22,5 +22,23 @@ router.post('/', (req, res) => {
     // res.send("post reached")
 })
 
+router.get('/:id', (req,res) => {
+    const {id} = req.params;
+
+    const findBooking = flight.find((booking) => booking.id == id)
+
+    res.send(findBooking);
+})
+
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+
+    const ticket = flight.filter((booking) => booking.id != id);
+
+    res.send(ticket);
+})
+
+
+
 module.exports = router;
 
