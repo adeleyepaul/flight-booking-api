@@ -1,17 +1,18 @@
-const express = require("express");
-const { json } = require("express");
-const flights = require("./controllers/flightController");
-const models = require("./models/Flight");
-const routes = require("./routes/flightRoute");
+const express = require('express')
+const bodyParser = require('body-parser')
+
+const flightRoutes = require('./routes/flightRoute.js')
+// import flightRoutes from './routes/flightRoute.js'
 
 const app = express();
+const PORT = 3000;
 
-app.use(json());
+app.use(bodyParser.json());
 
-app.use("/", routes);
+app.use("/flights", flightRoutes);
 
-const port = process.env.PORT || 3000;
+app.get('/', (req,res) => { res.send('Hello')});
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
