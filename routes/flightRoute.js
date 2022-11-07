@@ -38,7 +38,4 @@ router.delete('/:id', (req, res) => {
     res.send(ticket);
 })
 
-
-
 module.exports = router;
-
