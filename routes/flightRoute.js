@@ -38,4 +38,18 @@ router.delete('/:id', (req, res) => {
     res.send(ticket);
 })
 
+router.patch('/:id', (req, res) => {
+    const { id } = req.params;
+    const {title, time, price, date} = req.body;
+
+    const UpDate = flight.find((booking) => booking.id === id);
+
+    if(title) UpDate.title = title;
+    if(time) UpDate.time = time;
+    if(price) UpDate.price = price;
+    if(date) UpDate.date = date;
+
+    res.send(`Flight booking with id ${id} has been updated`);
+})
+
 module.exports = router;
